@@ -1,10 +1,19 @@
 import React from 'react';
-
-
-function App() {
-  return (
-    <div> APP works</div>
-  );
+import { User } from '../model/Model'
+interface AppState{
+  user: User
 }
 
-export default App;
+
+
+export class App extends React.Component<{},{}>{
+
+
+
+  render(){
+    return(
+      <div>App from class works!!</div>
+    )
+  }
+}
+
