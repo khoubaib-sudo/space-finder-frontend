@@ -36,18 +36,33 @@ export class Login extends React.Component <LoginProps, LoginState>{
 
     private async handelSubmit(event: SyntheticEvent){
         event.preventDefault();
+        this.setState({loginAttenpted: true})
         const result = await this.props.authService.login(
             this.state.userName,
             this.state.password
         )
         if (result){
-            console.log(result)
+            this.setState({
+                loginSuccesfull: true
+            })
         }else{
-            console.log('wrong login')
+            this.setState({
+                loginSuccesfull: false
+            })
         }
     }
 
     render(){
+        let loginMessage: any;
+        if(this.state.loginAttenpted){
+            if(this.state.loginSuccesfull){
+                loginMessage = <label>login successful</label>
+            }else{
+                loginMessage = <label>login failed</label>
+            }
+
+        }
+
         return(
             <div>
                 <h2>Login works</h2>
